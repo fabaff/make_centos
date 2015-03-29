@@ -16,13 +16,15 @@ following:
 
 Setup
 -----
-A bunch of packages needs to be installed on the 
+A bunch of packages needs to be installed on the system you are using to 
+create the ISO image::
 
     sudo yum -y install wget createrepo isomd5sum genisoimage syslinux
 
 Usage
 -----
-The script is `make_centos.sh` handles all tasks::
+The script is ``make_centos.sh`` handles all tasks. ``-h`` displays some
+details about the usage::
 
     usage:
             make_centos.sh [options] command
@@ -55,4 +57,4 @@ This project was inspired by the work of:
 
 License
 -------
-`make_centos` licensed under MIT, for more details check LICENSE.
+``make_centos`` licensed under MIT, for more details check LICENSE.
