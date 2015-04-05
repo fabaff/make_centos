@@ -5,18 +5,18 @@
 # Copyright (c) 2015, Fabian Affolter <fabian@affolter-engineering.ch>
 # Released under the MIT license. See LICENSE file for details.
 #
-RELEASE=7.0-1503
+RELEASE=7.1.1503
 TYPE=Minimal
 CURRENT_TIME=`date +%F`
 CUSTOM_RPMS=rpms
 DVD_LAYOUT=unpacked
 DVD_TITLE='AE-CentOS-7'
 MENU_TITLE='Affolter Engineering CentOS 7'
-ISO=CentOS-$RELEASE-x86_64-$TYPE.iso
+ISO=CentOS-${RELEASE:0:1}-x86_64-$TYPE-${RELEASE:4:6}.iso
 ISO_DIR=iso
 ISO_FILENAME=AE-CentOS-$RELEASE-x86_64-$TYPE-$CURRENT_TIME.iso
 MIRROR=ftp://ftp.halifax.rwth-aachen.de/centos/$RELEASE/isos/x86_64
-MOUNT_POINT=/mnt/centos-7
+MOUNT_POINT=/mnt/centos-${RELEASE:0:1}
 
 function fetch_iso() {
     if [ ! -d $ISO_DIR ]; then
