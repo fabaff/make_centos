@@ -16,7 +16,7 @@ ISO=CentOS-${RELEASE:0:1}-x86_64-$TYPE-${RELEASE:4:6}.iso
 ISO_DIR=iso
 ISO_FILENAME=AE-CentOS-$RELEASE-x86_64-$TYPE-$CURRENT_TIME.iso
 MIRROR=ftp://ftp.halifax.rwth-aachen.de/centos/$RELEASE/isos/x86_64
-MOUNT_POINT=/mnt/centos-${RELEASE:0:1}
+MOUNT_POINT=centos-${RELEASE:0:1}
 
 function fetch_iso() {
     if [ ! -d $ISO_DIR ]; then
@@ -71,9 +71,9 @@ function create_layout() {
     echo "Mounting $ISO to $MOUNT_POINT"
     if [ ! -d $MOUNT_POINT ]; then
         echo "Creating $MOUNT_POINT..."
-        sudo mkdir -p $MOUNT_POINT
+        mkdir -p $MOUNT_POINT
     fi
-    sudo mount -o loop $ISO_DIR/$ISO $MOUNT_POINT
+    sudo mount $ISO_DIR/$ISO $MOUNT_POINT
     echo "Populating layout (this will take a while) ..."
     rsync -Paz $MOUNT_POINT/ $DVD_LAYOUT
     sudo umount $MOUNT_POINT
@@ -97,10 +97,10 @@ function modify_boot_menu() {
 
 function cleanup_layout() {
     echo "Cleaning up $DVD_LAYOUT ..."
-    sudo find $DVD_LAYOUT -name TRANS.TBL -exec rm '{}' \;
-    COMPS_XML=`find $DVD_LAYOUT/repodata -name '*.xml' ! -name 'repomd.xml' -exec basename {} \;`
-    mv $DVD_LAYOUT/repodata/$COMPS_XML $DVD_LAYOUT/repodata/comps.xml 
+    find $DVD_LAYOUT -name TRANS.TBL -exec rm '{}' \;
+    mv $DVD_LAYOUT/repodata/*-c${RELEASE:0:1}-x86_64-comps.xml $DVD_LAYOUT/repodata/comps.xml
     find $DVD_LAYOUT/repodata -type f ! -name 'comps.xml' -exec rm '{}' \;
+
 }
 
 function create_iso() {
