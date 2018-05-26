@@ -5,7 +5,7 @@
 # Copyright (c) 2015-2018, Fabian Affolter <fabian@affolter-engineering.ch>
 # Released under the MIT license. See LICENSE file for details.
 #
-RELEASE=7.4-1804
+RELEASE=7.5-1804
 TYPE=Minimal
 CURRENT_TIME=`date +%F`
 CUSTOM_RPMS=rpms
