@@ -24,7 +24,7 @@ function fetch_iso() {
     fi
     if [ ! -e /usr/bin/curl ]; then
         echo "curl is not installed. Installation starts now ..."
-        sudo yum -y install curl
+        sudo dnf -y install curl
     fi
     if [ ! -e $ISO_DIR/$ISO ]; then
         echo "No local copy of $ISO. Fetching latest $ISO ..."
