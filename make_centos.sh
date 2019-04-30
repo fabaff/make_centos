@@ -113,13 +113,13 @@ function create_iso() {
     discinfo=`head -1 $DVD_LAYOUT/.discinfo`
     if [ ! -e /usr/bin/createrepo ]; then
         echo "createrepo is not installed. Installation starts now ..."
-        sudo yum -y install createrepo
+        sudo dnf -y install createrepo
     fi
     /usr/bin/createrepo -g repodata/comps.xml $DVD_LAYOUT
     echo "Creating new ISO image ..."
     if [ ! -e /usr/bin/genisoimage ]; then
         echo "genisoimage is not installed. Installation starts now ..."
-        sudo yum -y install genisoimage
+        sudo dnf -y install genisoimage
     fi
     /usr/bin/genisoimage \
         -o $ISO_FILENAME \
@@ -144,12 +144,12 @@ function create_iso() {
     echo "Finising new ISO image ..."
     if [ ! -e /usr/bin/implantisomd5 ]; then
         echo "implantisomd5 is not available. Installation starts now ..."
-        sudo yum -y install isomd5sum
+        sudo dnf -y install isomd5sum
     fi
     /usr/bin/implantisomd5 $ISO_FILENAME
     if [ ! -e /usr/bin/isohybrid ]; then
         echo "isohybrid is not available. Installation starts now ..."
-        sudo yum -y install syslinux-
+        sudo dnf -y install syslinux
     fi
     /usr/bin/isohybrid $ISO_FILENAME
     echo "New ISO image '$ISO_FILENAME' is ready"
