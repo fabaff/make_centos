@@ -1,11 +1,13 @@
 make_centos
 ===========
+
 ``make_centos`` allows one to create a customized CentOS 7 ISO image with
 additional packages if wished and Kickstart files to automate the installation
 process.
 
 Requirements
 ------------
+
 In order to create a customized CentOS ISO image, you need to have the
 following:
 
@@ -16,6 +18,7 @@ following:
 
 Setup
 -----
+
 A bunch of packages needs to be installed on the system you are using to 
 create the ISO image::
 
@@ -50,6 +53,7 @@ looks like this::
 
 Credits
 -------
+
 This project was inspired by the work of:
 
 * https://github.com/joyent/mi-centos-7
@@ -58,5 +62,6 @@ This project was inspired by the work of:
 
 License
 -------
+
 ``make_centos`` licensed under MIT, for more details check LICENSE.
 
