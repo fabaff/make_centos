@@ -2,7 +2,7 @@
 #
 # make_centos - This script to create a remastered CentOS ISO images
 #
-# Copyright (c) 2015-2019, Fabian Affolter <fabian@affolter-engineering.ch>
+# Copyright (c) 2015-2020, Fabian Affolter <fabian@affolter-engineering.ch>
 # Released under the MIT license. See LICENSE file for details.
 #
 RELEASE=7.6-1810
@@ -10,8 +10,8 @@ TYPE=Minimal
 CURRENT_TIME=`date +%F`
 CUSTOM_RPMS=rpms
 DVD_LAYOUT=unpacked
-DVD_TITLE='AE-CentOS-7'
-MENU_TITLE='Affolter Engineering CentOS 7'
+DVD_TITLE='audius-CentOS-7'
+MENU_TITLE='audius CentOS 7'
 ISO=CentOS-${RELEASE:0:1}-x86_64-$TYPE-${RELEASE:4:6}.iso
 ISO_DIR=iso
 ISO_FILENAME=AE-CentOS-$RELEASE-x86_64-$TYPE-$CURRENT_TIME.iso
@@ -121,16 +121,13 @@ function create_iso() {
         echo "genisoimage is not installed. Installation starts now ..."
         sudo dnf -y install genisoimage
     fi
-    /usr/bin/genisoimage \
-        -o $ISO_FILENAME \
+    /usr/bin/genisoimage -U -r -v -T -J \
+        -joliet-long \
         -V "$DVD_TITLE" \
-        -appid "$DVD_TITLE - $CURRENT_TIME" \
-        -p "Fabian Affolter <fabian@affolter-engineering.ch>" \
-        -J \
-        -rational-rock \
-        -translation-table \
+        -volset "$DVD_TITLE" \
+        -A "$DVD_TITLE  - $CURRENT_TIME" \
+        -p "Fabian Affolter <fabian.affolter@audius.de>" \
         -input-charset utf-8 \
-        -x "lost+found" \
         -b isolinux/isolinux.bin \
         -c isolinux/boot.cat \
         -no-emul-boot \
@@ -139,7 +136,8 @@ function create_iso() {
         -eltorito-alt-boot \
         -e images/efiboot.img \
         -no-emul-boot \
-        -T \
+        -x "lost+found" \
+        -o $ISO_FILENAME \
         $DVD_LAYOUT
     echo "Finising new ISO image ..."
     if [ ! -e /usr/bin/implantisomd5 ]; then
