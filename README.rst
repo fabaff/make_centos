@@ -22,7 +22,7 @@ Setup
 A bunch of packages needs to be installed on the system you are using to 
 create the ISO image::
 
-    sudo yum -y install wget createrepo isomd5sum genisoimage syslinux
+    sudo dnf -y install wget createrepo isomd5sum genisoimage syslinux
 
 Usage
 -----
