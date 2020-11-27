@@ -10,8 +10,8 @@ TYPE=Minimal
 CURRENT_TIME=`date +%F`
 CUSTOM_RPMS=rpms
 DVD_LAYOUT=unpacked
-DVD_TITLE='audius-CentOS-7'
-MENU_TITLE='audius CentOS 7'
+DVD_TITLE='custom-CentOS-7'
+MENU_TITLE='custom CentOS 7'
 ISO=CentOS-${RELEASE:0:1}-x86_64-$TYPE-${RELEASE:4:6}.iso
 ISO_DIR=iso
 ISO_FILENAME=Custom-CentOS-$RELEASE-x86_64-$TYPE-$CURRENT_TIME.iso
@@ -133,7 +133,7 @@ function create_iso() {
         -V "$DVD_TITLE" \
         -volset "$DVD_TITLE" \
         -A "$DVD_TITLE  - $CURRENT_TIME" \
-        -p "Fabian Affolter <fabian.affolter@audius.de>" \
+        -p "Goldilock" \
         -input-charset utf-8 \
         -b isolinux/isolinux.bin \
         -c isolinux/boot.cat \
