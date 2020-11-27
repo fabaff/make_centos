@@ -37,7 +37,7 @@ function fetch_iso() {
         echo "No local copy of $ISO. Fetching latest $ISO ... $MIRROR/$ISO"
         curl -o $ISO_DIR/$ISO $MIRROR/$ISO
     fi
-    #check_iso
+    check_iso
 }
 
 function check_iso() {
