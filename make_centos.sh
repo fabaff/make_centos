@@ -77,7 +77,7 @@ function create_layout() {
         echo "Creating $MOUNT_POINT..."
         mkdir -p $MOUNT_POINT
     fi
-    sudo mount -t iso9660 -o loop $ISO_DIR/$ISO $MOUNT_POINT
+    sudo mount $ISO_DIR/$ISO $MOUNT_POINT
     echo "Populating layout (this will take a while) ..."
     rsync -Paz $MOUNT_POINT/ $DVD_LAYOUT
     sudo umount $MOUNT_POINT
