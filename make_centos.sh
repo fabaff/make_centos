@@ -15,7 +15,7 @@ MENU_TITLE='audius CentOS 7'
 ISO=CentOS-${RELEASE:0:1}-x86_64-$TYPE-${RELEASE:4:6}.iso
 ISO_DIR=iso
 ISO_FILENAME=AE-CentOS-$RELEASE-x86_64-$TYPE-$CURRENT_TIME.iso
-MIRROR=http://isoredirect.centos.org/centos/$RELEASE/isos/x86_64
+MIRROR=http://centos.mirror.snu.edu.in/centos/$RELEASE/isos/x86_64
 MOUNT_POINT=centos-${RELEASE:0:1}
 
 
