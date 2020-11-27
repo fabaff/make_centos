@@ -5,7 +5,7 @@
 # Copyright (c) 2015-2020, Fabian Affolter <fabian@affolter-engineering.ch>
 # Released under the MIT license. See LICENSE file for details.
 #
-RELEASE=8.2.2004
+RELEASE=7.6-1810
 TYPE=Minimal
 CURRENT_TIME=`date +%F`
 CUSTOM_RPMS=rpms
@@ -17,6 +17,10 @@ ISO_DIR=iso
 ISO_FILENAME=AE-CentOS-$RELEASE-x86_64-$TYPE-$CURRENT_TIME.iso
 MIRROR=http://isoredirect.centos.org/centos/$RELEASE/isos/x86_64
 MOUNT_POINT=centos-${RELEASE:0:1}
+
+
+echo  "ISO - $ISO"
+echo  "ISO_FILENAME - $ISO_FILENAME"
 
 function fetch_iso() {
     if [ ! -d $ISO_DIR ]; then
