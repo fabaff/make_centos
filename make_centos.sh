@@ -31,7 +31,7 @@ function fetch_iso() {
         sudo dnf -y install curl
     fi
     if [ ! -e $ISO_DIR/$ISO ]; then
-        echo "No local copy of $ISO. Fetching latest $ISO ..."
+        echo "No local copy of $ISO. Fetching latest $ISO ... $ISO_DIR/$ISO $MIRROR/$ISO"
         curl -o $ISO_DIR/$ISO $MIRROR/$ISO
     fi
     #check_iso
