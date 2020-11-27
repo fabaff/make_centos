@@ -5,7 +5,7 @@
 # Copyright (c) 2015-2020, Fabian Affolter <fabian@affolter-engineering.ch>
 # Released under the MIT license. See LICENSE file for details.
 #
-RELEASE=7.6-1810
+RELEASE=7.9.2009
 TYPE=Minimal
 CURRENT_TIME=`date +%F`
 CUSTOM_RPMS=rpms
@@ -22,6 +22,9 @@ MOUNT_POINT=centos-${RELEASE:0:1}
 echo  "ISO - $ISO"
 echo  "ISO_FILENAME - $ISO_FILENAME"
 
+echo "http://centos.mirror.snu.edu.in/centos/7.9.2009/isos/x86_64/CentOS-7-x86_64-Minimal-2009.iso"
+echo "$MIRROR/$ISO"
+
 function fetch_iso() {
     if [ ! -d $ISO_DIR ]; then
         mkdir -p $ISO_DIR
@@ -31,7 +34,7 @@ function fetch_iso() {
         sudo dnf -y install curl
     fi
     if [ ! -e $ISO_DIR/$ISO ]; then
-        echo "No local copy of $ISO. Fetching latest $ISO ... $ISO_DIR/$ISO $MIRROR/$ISO"
+        echo "No local copy of $ISO. Fetching latest $ISO ... $MIRROR/$ISO"
         curl -o $ISO_DIR/$ISO $MIRROR/$ISO
     fi
     #check_iso
