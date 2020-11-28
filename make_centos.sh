@@ -5,24 +5,24 @@
 # Copyright (c) 2015-2020, Fabian Affolter <fabian@affolter-engineering.ch>
 # Released under the MIT license. See LICENSE file for details.
 #
-RELEASE=7.9.2009
-TYPE=Minimal
+RELEASE=8.2.2004
+TYPE=minimal
 CURRENT_TIME=`date +%F`
 CUSTOM_RPMS=rpms
 DVD_LAYOUT=unpacked
-DVD_TITLE='AE-CentOS-7'
-MENU_TITLE='AE CentOS 7'
-ISO=CentOS-${RELEASE:0:1}-x86_64-$TYPE-${RELEASE:4:6}.iso
+DVD_TITLE='AE-CentOS-8'
+MENU_TITLE='AE CentOS 8'
+ISO=CentOS-${RELEASE}-x86_64-$TYPE.iso
 ISO_DIR=iso
 ISO_FILENAME=AE-CentOS-$RELEASE-x86_64-$TYPE-$CURRENT_TIME.iso
-MIRROR=http://centos.mirror.snu.edu.in/centos/$RELEASE/isos/x86_64
+MIRROR=http://centos.hbcse.tifr.res.in/centos/$RELEASE/isos/x86_64
 MOUNT_POINT=centos-${RELEASE:0:1}
 
 
 echo  "ISO - $ISO"
 echo  "ISO_FILENAME - $ISO_FILENAME"
 
-echo "http://centos.mirror.snu.edu.in/centos/7.9.2009/isos/x86_64/CentOS-7-x86_64-Minimal-2009.iso"
+echo "http://centos.mirror.snu.edu.in/centos/8.2.2004/isos/x86_64/CentOS-8.2.2004-x86_64-minimal.iso"
 echo "$MIRROR/$ISO"
 
 function fetch_iso() {
@@ -102,6 +102,7 @@ function fetch_custom_rpms(){
     echo "Downloading Docker"
     yum install --downloadonly  docker-ce docker-ce-cli containerd.io --downloaddir=./rpms
 }
+
 function copy_rpms() {
     echo "Copying custom RPMS"
     find $CUSTOM_RPMS -type f -exec cp {} $DVD_LAYOUT/Packages \;
