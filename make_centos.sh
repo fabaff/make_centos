@@ -86,6 +86,22 @@ function create_layout() {
     sudo umount $MOUNT_POINT
 }
 
+function fetch_custom_rpms(){
+    echo "Downloading Yum Utils"
+    yum install -y yum-utils
+
+    echo "Downloading Extra repos"
+    yumdownloader --enablerepo=extras epel-release 
+
+    echo "Downloading iptables"
+    yumdownloader iptables-services
+
+    echo "Adding config manager"
+    yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+    echo "Downloading Docker"
+    yumdownloader  docker-ce docker-ce-cli containerd.io
+}
 function copy_rpms() {
     echo "Copying custom RPMS"
     find $CUSTOM_RPMS -type f -exec cp {} $DVD_LAYOUT/Packages \;
@@ -115,6 +131,7 @@ function create_iso() {
     cleanup_layout
     copy_ks_cfg
     modify_boot_menu
+    fetch_custom_rpms
     copy_rpms
     echo "Preparing new ISO image ..."
     discinfo=`head -1 $DVD_LAYOUT/.discinfo`
