@@ -91,16 +91,16 @@ function fetch_custom_rpms(){
     yum install -y yum-utils
 
     echo "Downloading Extra repos"
-    yumdownloader --enablerepo=extras epel-release --destdir=./rpms
+    yum install --downloadonly --enablerepo=extras epel-release --downloaddir==./rpms
 
     echo "Downloading iptables"
-    yumdownloader iptables-services --destdir=./rpms
+    yum install --downloadonly iptables-services --downloaddir==./rpms
 
     echo "Adding config manager"
     yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 
     echo "Downloading Docker"
-    yumdownloader  docker-ce docker-ce-cli containerd.io --destdir=./rpms
+    yum install --downloadonly  docker-ce docker-ce-cli containerd.io --downloaddir==./rpms
 }
 function copy_rpms() {
     echo "Copying custom RPMS"
