@@ -152,8 +152,8 @@ function create_iso() {
     fi
 
     echo "Creating Repo"
-    pwd
     cat $DVD_LAYOUT/$REPODATA/comps.xml
+    pwd
 
     /usr/bin/createrepo -v -g $DVD_LAYOUT/$REPODATA/comps.xml $DVD_LAYOUT
     echo "Creating Repo Completed"
