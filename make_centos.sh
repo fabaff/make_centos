@@ -152,8 +152,10 @@ function create_iso() {
     fi
 
     echo "Creating Repo"
-    /usr/bin/createrepo -g repodata/comps.xml $DVD_LAYOUT/BaseOS
+    cat repodata/comps.xml
 
+    /usr/bin/createrepo -g repodata/comps.xml $DVD_LAYOUT/BaseOS
+    echo "Creating Repo Completed"
     echo "Creating new ISO image ..."
     if [ ! -e /usr/bin/genisoimage ]; then
         echo "genisoimage is not installed. Installation starts now ..."
