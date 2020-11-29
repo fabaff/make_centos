@@ -126,15 +126,9 @@ function modify_boot_menu() {
 
 function cleanup_layout() {
     echo "Cleaning up $DVD_LAYOUT ..."
-    echo "************"
-    pwd
-    echo "************"
     find $DVD_LAYOUT -name TRANS.TBL -exec rm '{}' \;
-    #mv $DVD_LAYOUT/$REPODATA/*-comps-BaseOS.x86_64.xml $DVD_LAYOUT/$REPODATA/comps.xml
-    find $DVD_LAYOUT/$REPODATA -type f ! -name 'comps.xml' -exec rm '{}' \;
-    echo "************ check after the removal"
-    ls $DVD_LAYOUT/$REPODATA
-    echo "************"
+    mv $DVD_LAYOUT/repodata/*-c${RELEASE:0:1}-x86_64-comps.xml $DVD_LAYOUT/repodata/comps.xml
+    find $DVD_LAYOUT/repodata -type f ! -name 'comps.xml' -exec rm '{}' \;
 }
 
 function create_iso() {
@@ -153,7 +147,7 @@ function create_iso() {
 
     echo "Creating Repo"
 
-    /usr/bin/createrepo -v -g $REPODATA/comps.xml $DVD_LAYOUT -o $DVD_LAYOUT/BaseOS
+    /usr/bin/createrepo -g repodata/comps.xml $DVD_LAYOUT
     echo "Creating Repo Completed"
     echo "Creating new ISO image ..."
     if [ ! -e /usr/bin/genisoimage ]; then
