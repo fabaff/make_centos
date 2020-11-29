@@ -147,7 +147,7 @@ function create_iso() {
     fi
 
     echo "Creating Repo"
-    /usr/bin/createrepo -g $REPODATA/comps.xml $DVD_LAYOUT/BaseOS
+    /usr/bin/createrepo -g repodata/comps.xml $DVD_LAYOUT/BaseOS
 
     echo "Creating new ISO image ..."
     if [ ! -e /usr/bin/genisoimage ]; then
