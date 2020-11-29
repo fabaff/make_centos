@@ -130,7 +130,7 @@ function cleanup_layout() {
     pwd
     echo "************"
     find $DVD_LAYOUT -name TRANS.TBL -exec rm '{}' \;
-    mv $DVD_LAYOUT/$REPODATA/*-comps-BaseOS.x86_64.xml $DVD_LAYOUT/$REPODATA/comps.xml
+    #mv $DVD_LAYOUT/$REPODATA/*-comps-BaseOS.x86_64.xml $DVD_LAYOUT/$REPODATA/comps.xml
     find $DVD_LAYOUT/$REPODATA -type f ! -name 'comps.xml' -exec rm '{}' \;
     echo "************ check after the removal"
     ls $DVD_LAYOUT/$REPODATA
