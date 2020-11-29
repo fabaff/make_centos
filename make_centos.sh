@@ -110,7 +110,7 @@ function fetch_custom_rpms(){
 
 function copy_rpms() {
     echo "Copying custom RPMS"
-    find $CUSTOM_RPMS -type f -exec cp {} $DVD_LAYOUT/Packages \;
+    find $CUSTOM_RPMS -type f -exec cp {} $DVD_LAYOUT/BaseOs/Packages \;
 }
 
 function copy_ks_cfg() {
