@@ -155,7 +155,7 @@ function create_iso() {
     cat $DVD_LAYOUT/$REPODATA/comps.xml
     pwd
 
-    /usr/bin/createrepo -v -g $DVD_LAYOUT/$REPODATA/comps.xml $DVD_LAYOUT/BaseOS --compress-type=bz2
+    /usr/bin/createrepo -v -g $DVD_LAYOUT/$REPODATA/comps.xml $DVD_LAYOUT
     echo "Creating Repo Completed"
     echo "Creating new ISO image ..."
     if [ ! -e /usr/bin/genisoimage ]; then
