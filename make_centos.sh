@@ -152,10 +152,10 @@ function create_iso() {
     fi
 
     echo "Creating Repo"
-    cat $DVD_LAYOUT/$REPODATA/comps.xml | grep doc
+    cat $DVD_LAYOUT/$REPODATA/comps.xml
     pwd
 
-    /usr/bin/createrepo -g $REPODATA/comps.xml $DVD_LAYOUT
+    /usr/bin/createrepo -v -g $DVD_LAYOUT/$REPODATA/comps.xml $DVD_LAYOUT/BaseOS --compress-type=bz2
     echo "Creating Repo Completed"
     echo "Creating new ISO image ..."
     if [ ! -e /usr/bin/genisoimage ]; then
