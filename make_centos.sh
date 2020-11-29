@@ -83,6 +83,11 @@ function create_layout() {
     sudo mount $ISO_DIR/$ISO $MOUNT_POINT
     echo "Populating layout (this will take a while) ..."
     rsync -Paz $MOUNT_POINT/ $DVD_LAYOUT
+
+    echo "D:****************************************************"
+    ls $DVD_LAYOUT
+    echo "D:****************************************************"
+
     sudo umount $MOUNT_POINT
 }
 
