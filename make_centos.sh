@@ -152,6 +152,7 @@ function create_iso() {
     fi
 
     echo "Creating Repo"
+    pwd
     cat $DVD_LAYOUT/$REPODATA/comps.xml
 
     /usr/bin/createrepo -v -g repodata/comps.xml $DVD_LAYOUT/BaseOS --compress-type=bz2
