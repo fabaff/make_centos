@@ -145,7 +145,10 @@ function create_iso() {
         echo "createrepo is not installed. Installation starts now ..."
         sudo dnf -y install createrepo
     fi
-    /usr/bin/createrepo -g repodata/comps.xml $DVD_LAYOUT
+
+    echo "Creating Repo"
+    /usr/bin/createrepo -g repodata/comps.xml $DVD_LAYOUT/BaseOS
+
     echo "Creating new ISO image ..."
     if [ ! -e /usr/bin/genisoimage ]; then
         echo "genisoimage is not installed. Installation starts now ..."
