@@ -17,7 +17,7 @@ ISO_DIR=iso
 ISO_FILENAME=AE-CentOS-$RELEASE-x86_64-$TYPE-$CURRENT_TIME.iso
 MIRROR=http://centos.hbcse.tifr.res.in/centos/$RELEASE/isos/x86_64
 MOUNT_POINT=centos-${RELEASE:0:1}
-
+REPODATA=BaseOS/repodata
 
 echo  "ISO - $ISO"
 echo  "ISO_FILENAME - $ISO_FILENAME"
@@ -63,7 +63,7 @@ function clean_layout() {
 function create_layout() {
     if [ -d $DVD_LAYOUT ]; then
         echo "Layout $DVD_LAYOUT exists...delete repodata and isolinux only"
-        rm -rf $DVD_LAYOUT/repodata
+        rm -rf $DVD_LAYOUT/$REPODATA
         rm -rf $DVD_LAYOUT/isolinux
     fi
     echo "Creating $DVD_LAYOUT ..."
@@ -127,8 +127,8 @@ function modify_boot_menu() {
 function cleanup_layout() {
     echo "Cleaning up $DVD_LAYOUT ..."
     find $DVD_LAYOUT -name TRANS.TBL -exec rm '{}' \;
-    mv $DVD_LAYOUT/repodata/*-c${RELEASE:0:1}-x86_64-comps.xml $DVD_LAYOUT/repodata/comps.xml
-    find $DVD_LAYOUT/repodata -type f ! -name 'comps.xml' -exec rm '{}' \;
+    mv $DVD_LAYOUT/$REPODATA/*-comps-BaseOS.x86_64.xml $DVD_LAYOUT/$REPODATA/comps.xml
+    find $DVD_LAYOUT/$REPODATA -type f ! -name 'comps.xml' -exec rm '{}' \;
 
 }
 
@@ -147,7 +147,7 @@ function create_iso() {
     fi
 
     echo "Creating Repo"
-    /usr/bin/createrepo -g repodata/comps.xml $DVD_LAYOUT/BaseOS
+    /usr/bin/createrepo -g $REPODATA/comps.xml $DVD_LAYOUT/BaseOS
 
     echo "Creating new ISO image ..."
     if [ ! -e /usr/bin/genisoimage ]; then
