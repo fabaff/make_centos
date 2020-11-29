@@ -142,7 +142,7 @@ function create_iso() {
     cleanup_layout
     copy_ks_cfg
     modify_boot_menu
-    #fetch_custom_rpms
+    fetch_custom_rpms
     copy_rpms
     echo "Preparing new ISO image ..."
     discinfo=`head -1 $DVD_LAYOUT/.discinfo`
