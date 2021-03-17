@@ -2,7 +2,7 @@
 #
 # make_centos - This script to create a remastered CentOS ISO images
 #
-# Copyright (c) 2015-2020, Fabian Affolter <fabian@affolter-engineering.ch>
+# Copyright (c) 2015-2021, Fabian Affolter <fabian@affolter-engineering.ch>
 # Released under the MIT license. See LICENSE file for details.
 #
 RELEASE=7.6-1810
@@ -10,8 +10,8 @@ TYPE=Minimal
 CURRENT_TIME=`date +%F`
 CUSTOM_RPMS=rpms
 DVD_LAYOUT=unpacked
-DVD_TITLE='audius-CentOS-7'
-MENU_TITLE='audius CentOS 7'
+DVD_TITLE='your-CentOS'
+MENU_TITLE='your CentOS'
 ISO=CentOS-${RELEASE:0:1}-x86_64-$TYPE-${RELEASE:4:6}.iso
 ISO_DIR=iso
 ISO_FILENAME=AE-CentOS-$RELEASE-x86_64-$TYPE-$CURRENT_TIME.iso
@@ -126,7 +126,7 @@ function create_iso() {
         -V "$DVD_TITLE" \
         -volset "$DVD_TITLE" \
         -A "$DVD_TITLE  - $CURRENT_TIME" \
-        -p "Fabian Affolter <fabian.affolter@audius.de>" \
+        -p "Fabian Affolter <fabian@affolter-engineering.ch>" \
         -input-charset utf-8 \
         -b isolinux/isolinux.bin \
         -c isolinux/boot.cat \
