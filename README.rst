@@ -51,6 +51,14 @@ looks like this::
     ├── rpms ----------- Place all custom RPMS inthis folder
     └── unpacked ------- Here is the original ISO image content stored
 
+Test your ISO
+-------------
+
+There are many way to run the created ISO file, one is ``qemu``::
+
+   qemu-system-x86_64 -boot d  -m 1024 -cdrom your.iso
+
+
 Credits
 -------
 
