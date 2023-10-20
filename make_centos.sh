@@ -2,7 +2,7 @@
 #
 # make_centos - This script to create a remastered CentOS ISO images
 #
-# Copyright (c) 2015-2021, Fabian Affolter <fabian@affolter-engineering.ch>
+# Copyright (c) 2015-2023, Fabian Affolter <fabian@affolter-engineering.ch>
 # Released under the MIT license. See LICENSE file for details.
 #
 RELEASE=7.6-1810
